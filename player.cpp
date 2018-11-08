@@ -19,18 +19,18 @@ void Player::bookCards(Card c1, Card c2) {
     myBook.push_back(c2);
 }
 
-int Player::getcard(int CardRank){
+Card Player::getcard(int CardRank){
     int index = 0;
     for(int size_myHand = myHand.size(); size_myHand != 0 ; size_myHand--){
         int Rank = myHand[index].getRank();
         if(Rank == CardRank){
-            return Rank;
+            return myHand[index];
         }
         index++;
     }
 }
 bool Player::checkHandForBook(Card &c1, Card &c2) {
-    int sizeofMyHand1=4;
+    int sizeofMyHand1=myHand.size()-1;
     int sizeofMyHand2;
     int index1 = 0;
     int index2 = 1;
@@ -51,7 +51,8 @@ bool Player::checkHandForBook(Card &c1, Card &c2) {
 Card Player::chooseCardFromHand() const {
     srand(4);
     //srand(time(0));
-    int CardfromHand = rand()%4;
+
+    int CardfromHand = rand()%myHand.size();
     return myHand[CardfromHand];
 }
 
@@ -101,12 +102,12 @@ string Player::showBooks() const {
     Card tempBook;
     int index=0;
     if(myBook.size() == 0){
-        tempBuffer = "No books made. You suck.";
+        tempBuffer = "nothing";
     }
     for(int size_myBook = myBook.size(); size_myBook != 0; size_myBook--){
         tempBook = myBook[index];
         tempBuffer = tempBuffer + tempBook.toString();
-        tempBuffer = tempBuffer + "    ";
+        tempBuffer = tempBuffer + " ";
         index++;
     }
     return tempBuffer;

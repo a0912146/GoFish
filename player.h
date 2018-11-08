@@ -39,7 +39,7 @@ public:
 
     bool checkHandForBook(Card &c1, Card &c2);
 
-    int getcard(int CardRank);
+    Card getcard(int CardRank);
     //uses some strategy to choose one card from the player's
     //hand so they can say "Do you have a 4?"
     Card chooseCardFromHand() const;
