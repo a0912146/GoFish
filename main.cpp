@@ -94,8 +94,6 @@ int main( )
             p1.removeCardFromHand(checkCard2);
             p2.removeCardFromHand(checkCard2);
             cout << p1.getName() << " books the " << Rank11 << endl;
-            cout << p1.getName() << " has these cards in his hand: " << p1.showHand() << endl;
-            cout << p2.getName() << " has these cards in her hand: " << p2.showHand() << endl;
             if(p1.getHandSize() == 0) {
                 while (p1.getHandSize() != numCards) {
                     if (d.size() != 0) {
@@ -127,6 +125,15 @@ int main( )
                 p1.removeCardFromHand(pairOne);
                 p1.removeCardFromHand(pairTwo);
                 cout << p1.getName() << " has booked: " << p1.showBooks() << " from drawing a card from the pile." << endl;
+                if (p1.getHandSize() == 0) {
+                    while (p1.getHandSize() != numCards) {
+                        if (d.size() != 0) {
+                            dealHand(d, p1, oneCard);
+                        } else {
+                            break;
+                        }
+                    }
+                }
             }
 
         }
@@ -181,6 +188,15 @@ int main( )
                 p2.removeCardFromHand(pairOne);
                 p2.removeCardFromHand(pairTwo);
                 cout << p2.getName() << " has booked: " << p2.showBooks() << " from drawing a card from the pile." << endl;
+                if (p2.getHandSize() == 0) {
+                    while (p2.getHandSize() != numCards) {
+                        if (d.size() != 0) {
+                            dealHand(d, p2, oneCard);
+                        } else {
+                            break;
+                        }
+                    }
+                }
             }
         }
         cout << p1.getName() << " has these cards in his hand: " << p1.showHand() << endl;
