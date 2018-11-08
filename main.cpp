@@ -253,13 +253,13 @@ int main( )
                 Player1 = p1.getBookSize();
                 Player2 = p2.getBookSize();
                 if(Player1 > Player2){
-                    cout << p1.getName() << " has won the game with " << Player1 << " bookings. There are the bookings: " << p1.showBooks() << endl;
-                    cout << "These are " << p2.getName() << "bookings:" << p2.showBooks() << endl;
+                    cout << p1.getName() << " has won the game with " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
+                    cout << p2.getName() << " has " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
                     break;
                 }
                 else{
-                    cout << p2.getName() << " has won the game with " << Player2 << " bookings. There are the bookings: " << p2.showBooks() << endl;
-                    cout << "These are " << p1.getName() << "bookings:" << p1.showBooks() << endl;
+                    cout << p2.getName() << " has won the game with " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
+                    cout << p1.getName() << " has " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
                     break;
                 }
             }
@@ -287,13 +287,13 @@ int main( )
                     Player1 = p1.getBookSize();
                     Player2 = p2.getBookSize();
                     if(Player1 > Player2){
-                        cout << p1.getName() << " has won the game with " << Player1 << " bookings. There are the bookings: " << p1.showBooks() << endl;
-                        cout << "These are " << p2.getName() << "bookings:" << p2.showBooks() << endl;
+                        cout << p1.getName() << " has won the game with " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
+                        cout << p2.getName() << " has " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
                         break;
                     }
                     else{
-                        cout << p2.getName() << " has won the game with " << Player2 << " bookings. There are the bookings: " << p2.showBooks() << endl;
-                        cout << "These are " << p1.getName() << "bookings:" << p1.showBooks() << endl;
+                        cout << p2.getName() << " has won the game with " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
+                        cout << p1.getName() << " has " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
                         break;
                     }
                 }
@@ -330,13 +330,13 @@ int main( )
                 Player1 = p1.getBookSize();
                 Player2 = p2.getBookSize();
                 if(Player1 > Player2){
-                    cout << p1.getName() << " has won the game with " << Player1 << " bookings. There are the bookings: " << p1.showBooks() << endl;
-                    cout << "These are " << p2.getName() << "bookings:" << p2.showBooks() << endl;
+                    cout << p1.getName() << " has won the game with " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
+                    cout << p2.getName() << " has " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
                     break;
                 }
                 else{
-                    cout << p2.getName() << " has won the game with " << Player2 << " bookings. There are the bookings: " << p2.showBooks() << endl;
-                    cout << "These are " << p1.getName() << "bookings:" << p1.showBooks() << endl;
+                    cout << p2.getName() << " has won the game with " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
+                    cout << p1.getName() << " has " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
                     break;
                 }
             }
@@ -350,13 +350,13 @@ int main( )
                 Player1 = p1.getBookSize();
                 Player2 = p2.getBookSize();
                 if(Player1 > Player2){
-                    cout << p1.getName() << " has won the game with " << Player1 << " bookings. There are the bookings: " << p1.showBooks() << endl;
-                    cout << "These are " << p2.getName() << "bookings:" << p2.showBooks() << endl;
+                    cout << p1.getName() << " has won the game with " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
+                    cout << p2.getName() << " has " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
                     break;
                 }
                 else{
-                    cout << p2.getName() << " has won the game with " << Player2 << " bookings. There are the bookings: " << p2.showBooks() << endl;
-                    cout << "These are " << p1.getName() << "bookings:" << p1.showBooks() << endl;
+                    cout << p2.getName() << " has won the game with " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
+                    cout << p1.getName() << " has " << Player1 << " bookings. These are the bookings: " << p2.showBooks() << endl;
                     break;
                 }
             }
@@ -383,13 +383,13 @@ int main( )
                     Player1 = p1.getBookSize();
                     Player2 = p2.getBookSize();
                     if(Player1 > Player2){
-                        cout << p1.getName() << " has won the game with " << Player1 << " bookings. There are the bookings: " << p1.showBooks() << endl;
-                        cout << "These are " << p2.getName() << "bookings:" << p2.showBooks() << endl;
+                        cout << p1.getName() << " has won the game with " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
+                        cout << p2.getName() << " has " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
                         break;
                     }
                     else{
-                        cout << p2.getName() << " has won the game with " << Player2 << " bookings. There are the bookings: " << p2.showBooks() << endl;
-                        cout << "These are " << p1.getName() << "bookings:" << p1.showBooks() << endl;
+                        cout << p2.getName() << " has won the game with " << Player2 << " bookings. These are the bookings: " << p2.showBooks() << endl;
+                        cout << p1.getName() << " has " << Player1 << " bookings. These are the bookings: " << p1.showBooks() << endl;
                         break;
                     }
                 }
