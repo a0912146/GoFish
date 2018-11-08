@@ -36,15 +36,19 @@ Deck::Deck() {
 }
 
 void Deck::shuffle() {
+    int tempIndex = myIndex;
     srand(time(0));
-    int random = rand()%SIZE + 1;   //http://www.cplusplus.com/reference/cstdlib/rand/
+    int random = rand()%51;
     Card tempCard;
-    for (int index = 0; index <= size(); index++) {
-        tempCard = myCards[random];
-        myCards[random] = myCards[index];
-        myCards[index] = tempCard;
-        random = rand()%SIZE + 1;
+    for(int jIndex = 0; jIndex <SIZE; jIndex++) {
+        for (int index = 0; index < SIZE; index++) {
+            tempCard = myCards[random];
+            myCards[random] = myCards[index];
+            myCards[index] = tempCard;
+            random = rand()%51;
+        }
     }
+    myIndex = tempIndex;
 }
 
 Card Deck::dealCard() {
@@ -62,7 +66,7 @@ Card Deck::dealCard() {
 
 int Deck::size() const {
     int SizeofCards=SIZE;
-    for(int tempSize = 0; tempSize<=myIndex; tempSize++){
+    for(int tempSize = 0; tempSize < myIndex; tempSize++){
         SizeofCards--;
     }
     return SizeofCards;

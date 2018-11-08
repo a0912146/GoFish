@@ -81,6 +81,7 @@ string Player::showHand() const {
         tempCard = myHand[index];
         tempBuffer = tempBuffer + tempCard.toString();
         tempBuffer = tempBuffer + "   ";    // space between cards
+        index++;
     }
     return tempBuffer;
 }
@@ -104,5 +105,3 @@ int Player::getHandSize() const {
 int Player::getBookSize() const {
     return myBook.size();
 }
-
-bool Player::sameRankInHand(Card c) const {}

@@ -8,7 +8,7 @@ using namespace std;
 // Constructor for Card()
 // Default is ace of spades (1 refers to ace)
 Card::Card() {
-    myRank = 0;
+    myRank = 1;
     mySuit = Card::spades;
     }
 
@@ -18,9 +18,13 @@ Card::Card(int rank, Suit s){
 }
 
 string Card::toString() const {
-    string Rank = rankString(myRank);
-    string Suit = suitString(mySuit);
-    return Rank+Suit;
+    string Rank = "";
+    string Suit = "";
+    string Card = "";
+    Rank = rankString(myRank);
+    Suit = suitString(mySuit);
+    Card = Rank + Suit;
+    return Card;
 }
 
 bool Card::sameSuitAs(const Card& c) const {
@@ -36,27 +40,31 @@ int Card::getRank() const {
     return myRank;
 }
 
+
 string Card::suitString(Card::Suit s) const {
-    string newSuit;
+    string newSuit = "";
     if (s == Card::spades){
-        newSuit == "s";
+        newSuit = "s";
+        return newSuit;
     }
     if (s == Card::hearts){
-        newSuit == "h";
+        newSuit = "h";
+        return newSuit;
     }
     if (s == Card::diamonds){
-        newSuit == "d";
+        newSuit = "d";
+        return newSuit;
     }
     if (s == Card::clubs){
-        newSuit == "c";
+        newSuit = "c";
+        return newSuit;
     }
-    return newSuit;
 }
 
 
 
 string Card::rankString(int r) const {
-    string newCard;
+    string newCard = "";
     if (r== 1){
         newCard = "A";
     }
