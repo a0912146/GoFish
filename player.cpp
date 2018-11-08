@@ -20,24 +20,20 @@ void Player::bookCards(Card c1, Card c2) {
 }
 
 bool Player::checkHandForBook(Card &c1, Card &c2) {
-    int sizeofMyHand1 = myHand.size();
-    int sizeofMyHand2 = myHand.size();
+    int sizeofMyHand1=4;
+    int sizeofMyHand2;
     int index1 = 0;
     int index2 = 1;
-    for(sizeofMyHand1 = sizeofMyHand1; sizeofMyHand1!=0; sizeofMyHand1--){
+    for(sizeofMyHand2 = myHand.size()-1; sizeofMyHand2!=0; sizeofMyHand2--) {
         c1 = myHand[index1];
-        if((sizeofMyHand1-1)==0){
-            return false;
+        for (index2=index1+1; index2 != sizeofMyHand1; index2++) {
+            c2 = myHand[index2];
+            if (c1.getRank() == c2.getRank()) {
+                return true;
+            }
         }
-
-        c2 = myHand[index2];
-
-        if (c1.getRank() == c2.getRank()){
-            return true;
-        }
-
         index1++;
-        index2++;
+        index2=index1+1;
     }
 }
 
@@ -49,8 +45,10 @@ Card Player::chooseCardFromHand() const {
 
 bool Player::cardInHand(Card c) const {
     int index = 0;
+    int Cardrank = c.getRank();
     for(int size_myHand = myHand.size(); size_myHand != 0 ; size_myHand--){
-        if(myHand[index] == c){
+        int Rank = myHand[index].getRank();
+        if(Rank == Cardrank){
             return true;
         }
         index++;

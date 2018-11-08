@@ -18,6 +18,7 @@ void dealHand(Deck &d, Player &p, int numCards);
 int main( )
 {
     int numCards = 5;
+    int oneCard = 1;
 
     //Create the players
     Player p1("Joe");
@@ -28,12 +29,92 @@ int main( )
     d.shuffle();
 
     //Deal the cards to make sure both players have 5 cards each
-    while(d.size() != 0) {
-        dealHand(d, p1, numCards);
-        dealHand(d, p2, numCards);
+    dealHand(d, p1, numCards);
+    dealHand(d, p2, numCards);
 
-        cout << p1.getName() << " has : " << p1.showHand() << endl;
-        cout << p2.getName() << " has : " << p2.showHand() << endl;
+    cout << p1.getName() << " has : " << p1.showHand() << endl;
+    cout << p2.getName() << " has : " << p2.showHand() << endl;
+
+    while(d.size() != 0) {
+
+        //check if player 1 and player 2 has any books
+       Card pairOne;
+       Card pairTwo;
+        while(p1.checkHandForBook(pairOne, pairTwo) == true){
+            p1.bookCards(pairOne, pairTwo);
+            p1.removeCardFromHand(pairOne);
+            p1.removeCardFromHand(pairTwo);
+            p1.addCard(d.dealCard());
+            p1.addCard(d.dealCard());
+        }
+        while(p2.checkHandForBook(pairOne, pairTwo) == true){
+            p2.bookCards(pairOne, pairTwo);
+            p2.removeCardFromHand(pairOne);
+            p2.removeCardFromHand(pairTwo);
+            p2.addCard(d.dealCard());
+            p2.addCard(d.dealCard());
+
+        }
+
+        cout << p1.getName() << " has booked: " << p1.showBooks() << endl;
+        cout << p2.getName() << " has booked: " << p2.showBooks() << endl;
+
+        //In case the players have made any books, they must return to their original amount
+        //(players must have 5 cards at all times). WIll CHECK FOR BOOKS ONLY HERE TO MAKE IT
+        // COHESIVE.
+        while (p1.getHandSize() != numCards) {
+                if(d.size() != 0){
+                    dealHand(d, p1, oneCard);
+                }
+                else{
+                    break;
+                }
+            }
+        while(p2.getHandSize() != numCards) {
+            if (d.size() != 0) {
+                dealHand(d, p2, oneCard);
+            }
+            else{
+                break;
+            }
+        }
+
+        // Player 1 asks if Player 2 has a card
+        Card checkCard1 = p1.chooseCardFromHand();
+        int Rank1 = checkCard1.getRank();
+        cout << p1.getName() << " asks - Do you have a " << Rank1 << endl;
+        if(p1.cardInHand(checkCard1) == true){
+            cout << p2.getName() << " says - Yes. I have a " << Rank1 << endl;
+            p1.addCard(checkCard1);
+            p2.removeCardFromHand(checkCard1);
+            cout << p1.getName() << " books the " << Rank1 << endl;
+        }
+        else{
+            Card dealtcard = d.dealCard();
+            Rank1 = dealtcard.getRank();
+            p1.addCard(dealtcard);
+            cout << p2.getName() << " says - Go Fish." << endl;
+            cout << p1.getName() << " draws " << Rank1 << endl;
+        }
+
+        //Player 2 asks if Player 1 has a card
+        Card checkCard2 = p2.chooseCardFromHand();
+        int Rank2 = checkCard2.getRank();
+        cout << p2.getName() << " asks - Do you have a " << Rank2 << endl;
+        if(p2.cardInHand(checkCard1) == true){
+            cout << p1.getName() << " says - Yes. I have a " << Rank2 << endl;
+            p2.addCard(checkCard2);
+            p1.removeCardFromHand(checkCard2);
+            cout << p2.getName() << " books the " << Rank2 << endl;
+        }
+        else{
+            Card dealtcard = d.dealCard();
+            Rank2 = dealtcard.getRank();
+            p2.addCard(dealtcard);
+            cout << p1.getName() << " says - Go Fish." << endl;
+            cout << p2.getName() << " draws " << Rank1 << endl;
+        }
+
     }
     return EXIT_SUCCESS;  
 }
