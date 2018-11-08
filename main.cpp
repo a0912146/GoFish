@@ -32,8 +32,8 @@ int main( )
     dealHand(d, p1, numCards);
     dealHand(d, p2, numCards);
 
-    cout << p1.getName() << " has : " << p1.showHand() << endl;
-    cout << p2.getName() << " has : " << p2.showHand() << endl;
+    cout << p1.getName() << " has these cards in his hand: " << p1.showHand() << endl;
+    cout << p2.getName() << " has these cards in her hand: " << p2.showHand() << endl;
 
     while(d.size() != 0) {
 
@@ -44,15 +44,25 @@ int main( )
             p1.bookCards(pairOne, pairTwo);
             p1.removeCardFromHand(pairOne);
             p1.removeCardFromHand(pairTwo);
-            p1.addCard(d.dealCard());
-            p1.addCard(d.dealCard());
+            if (d.size() != 0) {
+                p1.addCard(d.dealCard());
+                p1.addCard(d.dealCard());
+            }
+            else{
+                break;
+            }
         }
         while(p2.checkHandForBook(pairOne, pairTwo) == true){
             p2.bookCards(pairOne, pairTwo);
             p2.removeCardFromHand(pairOne);
             p2.removeCardFromHand(pairTwo);
-            p2.addCard(d.dealCard());
-            p2.addCard(d.dealCard());
+            if (d.size() != 0) {
+                p2.addCard(d.dealCard());
+                p2.addCard(d.dealCard());
+            }
+            else{
+                break;
+            }
 
         }
 
@@ -82,10 +92,14 @@ int main( )
         // Player 1 asks if Player 2 has a card
         Card checkCard1 = p1.chooseCardFromHand();
         int Rank1 = checkCard1.getRank();
+        Card checkCard2 = checkCard1;
         cout << p1.getName() << " asks - Do you have a " << Rank1 << endl;
-        if(p1.cardInHand(checkCard1) == true){
+        if(p2.cardInHand(checkCard1) == true){
             cout << p2.getName() << " says - Yes. I have a " << Rank1 << endl;
             p1.addCard(checkCard1);
+            int integer = p1.getcard(Rank1);
+            p1.bookCards(checkCard1, checkCard2);
+
             p2.removeCardFromHand(checkCard1);
             cout << p1.getName() << " books the " << Rank1 << endl;
         }
@@ -98,12 +112,15 @@ int main( )
         }
 
         //Player 2 asks if Player 1 has a card
-        Card checkCard2 = p2.chooseCardFromHand();
+        Card checkCard3 = p2.chooseCardFromHand();
         int Rank2 = checkCard2.getRank();
+        Card checkCard4 = checkCard3;
         cout << p2.getName() << " asks - Do you have a " << Rank2 << endl;
-        if(p2.cardInHand(checkCard1) == true){
+        if(p1.cardInHand(checkCard1) == true){
             cout << p1.getName() << " says - Yes. I have a " << Rank2 << endl;
             p2.addCard(checkCard2);
+            checkCard2 = p1.getcard(Rank2);
+            p2.bookCards(checkCard3, checkCard4);
             p1.removeCardFromHand(checkCard2);
             cout << p2.getName() << " books the " << Rank2 << endl;
         }
