@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "player.h"
+#include "time.h"
 using namespace std;
 
 
@@ -40,13 +41,68 @@ bool Player::checkHandForBook(Card &c1, Card &c2) {
     }
 }
 
-bool Player::rankInHand(Card c) const {}
-Card Player::chooseCardFromHand() const {}
-bool Player::cardInHand(Card c) const {}
-Card Player::removeCardFromHand(Card c) {}
-string Player::showHand() const {}
-string Player::showBooks() const {}
-int Player::getHandSize() const {}
-int Player::getBookSize() const {}
-bool Player::checkHandForPair(Card &c1, Card &c2) {}
+Card Player::chooseCardFromHand() const {
+    srand(time(0));
+    int CardfromHand = rand() * myHand.size() + 0;
+    return myHand[CardfromHand];
+}
+
+bool Player::cardInHand(Card c) const {
+    int index = 0;
+    for(int size_myHand = myHand.size(); size_myHand != 0 ; size_myHand--){
+        if(myHand[index] == c){
+            return true;
+        }
+        index++;
+    }
+    return false;
+}
+Card Player::removeCardFromHand(Card c) {
+    int index = 0;
+    Card returnvalue;
+    for(int size_myHand = myHand.size(); size_myHand != 0; size_myHand--){
+        if(myHand[index] == c){
+            returnvalue = myHand[index];
+            myHand.erase(myHand.begin()+index);
+            return returnvalue;
+        }
+        index++;
+    }
+    returnvalue = myHand[index];
+    myHand.erase(myHand.begin()+index);
+    return returnvalue;
+}
+
+string Player::showHand() const {
+    string tempBuffer = " ";
+    Card tempCard;
+    int index=0;
+    for(int size_myHand = myHand.size(); size_myHand != 0; size_myHand--){
+        tempCard = myHand[index];
+        tempBuffer = tempBuffer + tempCard.toString();
+        tempBuffer = tempBuffer + "   ";    // space between cards
+    }
+    return tempBuffer;
+}
+
+string Player::showBooks() const {
+    string tempBuffer = " ";
+    Card tempBook;
+    int index=0;
+    for(int size_myBook = myBook.size(); size_myBook != 0; size_myBook--){
+        tempBook = myBook[index];
+        tempBuffer = tempBuffer + tempBook.toString();
+        tempBuffer = tempBuffer + "    ";
+    }
+    return tempBuffer;
+}
+
+int Player::getHandSize() const {
+    return myHand.size();
+}
+
+int Player::getBookSize() const {
+    return myBook.size();
+}
+
 bool Player::sameRankInHand(Card c) const {}
