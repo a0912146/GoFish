@@ -37,8 +37,7 @@ Deck::Deck() {
 
 void Deck::shuffle() {
     int tempIndex = myIndex;
-    //srand(time(0));
-    srand(9);
+    srand(time(0));
     int random = rand()%51;
     Card tempCard;
     for(int jIndex = 0; jIndex <SIZE; jIndex++) {

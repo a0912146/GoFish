@@ -201,12 +201,20 @@ int main( )
     //finish going through the cards
     while(d.size() == 0){
         Player Winner= findWinner(p1, p2, d);
+        if(Winner.getName() == "tie"){
+            cout << "There was a tie. " << p1.getName() << " has " << p1.getBookSize() << ". These are the bookings: " << p1.showBooks() << ". \n" << p2.getName() <<
+            " has " << p2.getBookSize() << ". These are the bookings: " << p2.showBooks() << ". " <<endl;
+        }
         cout << Winner.getName() << " has WON the game with " << Winner.getBookSize() << " bookings. These are the bookings: " << Winner.showBooks() << endl;
         if (Winner.getName() == p1.getName()){
             cout << p2.getName() << " has " << p2.getBookSize() << " bookings. These are the bookings: " << p2.showBooks() << endl;
+            return EXIT_SUCCESS;
+        }
+        else{
+            cout << p1.getName() << " has " << p1.getBookSize() << " bookings. These are the bookings: " << p1.showBooks() << endl;
+            return EXIT_SUCCESS;
         }
     }
-    return EXIT_SUCCESS;  
 }
 
 
@@ -223,7 +231,7 @@ Player findWinner (Player &p1, Player &p2, Deck &d){
     int Player2;
     Card pairOne;
     Card pairTwo;
-
+    Player tie("tie");
     // Player 1 asks if Player 2 has a card
     Card checkCard1 = p1.chooseCardFromHand();
     int Rank1 = checkCard1.getRank();
@@ -246,10 +254,10 @@ Player findWinner (Player &p1, Player &p2, Deck &d){
             Player1 = p1.getBookSize();
             Player2 = p2.getBookSize();
             if(Player1 > Player2){
-                return p1.getName();
+                return p1;
             }
             else{
-                return p2.getName();
+                return p2;
             }
         }
 
@@ -273,6 +281,9 @@ Player findWinner (Player &p1, Player &p2, Deck &d){
                 Player2 = p2.getBookSize();
                 if(Player1 > Player2){
                     return p1.getName();
+                }
+                if(Player1 == Player2){
+                    return tie;
                 }
                 else{
                     return p2.getName();
@@ -309,6 +320,9 @@ Player findWinner (Player &p1, Player &p2, Deck &d){
             if(Player1 > Player2){
                 return p1.getName();
             }
+            if(Player1 == Player2){
+                return tie;
+            }
             else{
                 return p2.getName();
             }
@@ -322,6 +336,9 @@ Player findWinner (Player &p1, Player &p2, Deck &d){
             Player2 = p2.getBookSize();
             if(Player1 > Player2){
                 return p1.getName();
+            }
+            if(Player1 == Player2){
+                return tie;
             }
             else{
                 return p2.getName();
@@ -347,6 +364,9 @@ Player findWinner (Player &p1, Player &p2, Deck &d){
                 Player2 = p2.getBookSize();
                 if(Player1 > Player2){
                     return p1.getName();
+                }
+                if(Player1 == Player2){
+                    return tie;
                 }
                 else{
                     return p2.getName();

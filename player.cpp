@@ -49,8 +49,7 @@ bool Player::checkHandForBook(Card &c1, Card &c2) {
 }
 
 Card Player::chooseCardFromHand() const {
-    srand(4);
-    //srand(time(0));
+    srand(time(0));
 
     int CardfromHand = rand()%myHand.size();
     return myHand[CardfromHand];
